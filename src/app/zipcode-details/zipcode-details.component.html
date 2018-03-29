@@ -1,0 +1,33 @@
+<p></p>
+<div *ngIf="searchResult" style="text-align:center">
+    <table>
+      <tr>
+        <td>Straat</td>
+        <td>{{searchResult.details[0].street}}</td> 
+      </tr>
+      <tr>
+        <td>Stad</td>
+        <td>{{searchResult.details[0].city}}</td> 
+      </tr>
+      <tr>
+        <td>Gemeente</td>
+        <td>{{searchResult.details[0].municipality}}</td> 
+      </tr>
+      <tr>
+        <td>provincie</td>
+        <td>{{searchResult.details[0].province}}</td> 
+      </tr>
+      <tr>
+        <td>postcode</td>
+        <td>{{searchResult.details[0].postcode}}</td> 
+      </tr>
+      <tr>
+        <td>latitude</td>
+        <td>{{searchResult.details[0].lat}}</td> 
+      </tr>
+      <tr>
+        <td>longitude</td>
+        <td>{{searchResult.details[0].lon}}</td> 
+      </tr>
+    </table> 
+  </div>

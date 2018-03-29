@@ -1,0 +1,27 @@
+<div style="text-align:center">
+  <h3>Geef een geldige postcode en een huisnummer op om te zoeken</h3>
+<form novalidate #zoekFormulier="ngForm">
+    <div class="form-group">
+      <label for="inputPostcode">Postcode:</label>
+      <input type="string" class="form-control" id="inputPostcode" placeholder="Postcode (1234AB)" name="Postcode" required minlength="6" pattern="[0-9]{4}[a-zA-Z]{2}" ngModel>
+      
+    </div>
+    <p></p>
+    <div class="form-group">
+      <label for="inputNumber">Huisnummer:</label>
+      <input type="number" class="form-control" id="inputNumber" placeholder="Huisnummer" name="Huisnummer" required minlength="1" ngModel>
+    </div>
+    <p></p>
+    <button type="submit" class="btn btn-primaty" (click)="findAdress(zoekFormulier)" [disabled]="!zoekFormulier.valid">Zoek</button>
+    <button type="submit" class="btn btn-primaty" (click)="clearData(zoekFormulier)">Clear</button>
+  </form>
+</div>
+
+<app-zipcode-details *ngIf="searchResult && searchResult.status !='error'" [searchResult]="searchResult"></app-zipcode-details>
+<app-google-maps-display *ngIf="searchResult && searchResult.status !='error'" [lat]="getLatitude()" [lng]="getLongitude()"></app-google-maps-display>
+
+<div *ngIf="searchResult && searchResult.status ==='error'">
+  <p></p>
+  <B>Er is een error opgetreden!</B><p></p>
+  Error: {{searchResult.errormessage}}
+</div>
